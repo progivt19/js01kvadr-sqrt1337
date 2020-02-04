@@ -13,14 +13,26 @@ function solve() {
 	c = parseFloat(c);	
 	// дальше вам надо заменить код, чтобы он показывал решения,
 	// или строку "РЕШЕНИЙ НЕТ", если дискриминант уравнения < 0
-	alert(D(a,b,c));
+	if(D(a,b,c)<0){
+		alert("Нет решений");
+	} else if(D(a,b,c)==0){
+		alert(x1(a,b,c,D));
+	}
+	else {
+		console.log('x1='+x1(a,b,c,D),'\nx2='+x2(a,b,c,D));
+		alert(x1(a,b,c,D)+' '+x2(a,b,c,D));
+	}
 }
+	function D(a,b,c){
+		// вычисление дискриминанта по формуле
+		return b*b - 4*a*c;
+	}
 
-function D(a,b,c){
-	// вычисление дискриминанта по формуле
-	return b*b - 4*a*c;
-}
-
-function x1(a,b,c,D){
-	// вычисление меньшего корня
-}
+	function x1(a,b,c,D){
+		// вычисление меньшего корня
+		return (-b-Math.sqrt(D(a,b,c)))/(2*a);
+	}
+	function x2(a,b,c,D){
+		// вычисление меньшего корня
+		return (-b+Math.sqrt(D(a,b,c)))/(2*a);
+	}
